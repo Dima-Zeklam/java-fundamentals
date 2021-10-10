@@ -35,18 +35,23 @@ return word;
 
 
 int hour = now.getHour();
-int minute = now.getMinute();
+int minute = now.getMinute();;
     int secNow = now.getSecond();
 int second = now.getSecond();
 for(int i = 0;i<100;i++){
 
     try{
     Thread.sleep(1000);
-    if(second < 10){
- System.out.println(hour + ":" + minute + ":0" + second  );}else if(minute<10){
-     System.out.println(hour + ":0" + minute + ":" + second  );
+    System.out.print(hour + ":" );
+     if(minute<10){
+     System.out.print("0" + minute );
  }else{
-         System.out.println(hour + ":" + minute + ":" + second  ); 
+         System.out.print(minute); 
+ }
+    if(second < 10){
+ System.out.println(":0" + second  );
+ }else{
+         System.out.println(":" + second  ); 
  }
 }catch(InterruptedException e){
     e.printStackTrace();
@@ -60,7 +65,7 @@ if(second == 59){
 }
 second++;
 secNow++;
-if(minute == 59){
+if(minute == 60){
     minute=0;
     hour++;
 }
