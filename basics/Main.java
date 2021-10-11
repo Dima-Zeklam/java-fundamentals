@@ -7,28 +7,40 @@ return word + 's';
 
 return word;
 }
- public static void flipNHeads(int n){
-     boolean  flip  = true;
-     int heads = 0;
-     int FLIPS =0;
-     while(flip){
-          double rand = Math.random();
-         if(rand > 0.5){
-         System.out.println("tails");
-         FLIPS++;}
-         else if(rand < 0.5){
-           System.out.println("heads");
-           heads++;
-              FLIPS++;
+    public static void flipNHeads(int num) {
+        int heads = 0;
+        int counter = 0;
+       
+        while (heads != num) {
+            double rand = Math.random();
+         if(rand >= 0.5){
+         System.out.println("heads");
+         heads++;
+             
          }
-         if(heads == n )
-             flip=false;
-         
-     }
-       System.out.println("It took " + FLIPS + " flips to flip " + n +" heads in a row.");
-   
-     
-}
+         else {
+          System.out.println("tails");
+                heads = 0;
+            }
+            counter++;
+        }
+        
+         String flipNum;
+        if(counter == 1 ){
+            flipNum = "flip";
+        }else
+          flipNum = "flips";
+    
+        String headsNum;
+         if(heads == 1 ){
+            headsNum = "head";
+        }else
+          headsNum = "heads";
+
+        System.out.println("It took " + counter + " " +
+        flipNum + " to flip " + heads + " " + headsNum + " in a row.");
+    }
+
  public static void clock(){
      LocalDateTime now = LocalDateTime.now();
 
