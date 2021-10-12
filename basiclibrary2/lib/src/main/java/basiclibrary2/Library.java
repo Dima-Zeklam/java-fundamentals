@@ -61,6 +61,65 @@ public class Library {
 
         return arr[averageArray.indexOf(Collections.min(averageArray))];
     }
+
+    public static String analyzingWeather(int [][] arr){
+        HashSet<Integer> hashSet =new HashSet<>();
+        for(int i=0;i<arr.length;i++){
+    for(int j=0 ; j<arr[i].length;j++){
+        hashSet.add(arr[i][j]);
+    }
+}
+//        System.out.println(hashSet);
+
+        List<Integer> arrayList = new ArrayList<>();
+        for(int num:hashSet)
+        arrayList.add(num);
+        Collections.sort(arrayList);
+//        System.out.println(arrayList);
+         String result = "";
+        int min = arrayList.get(0);
+         int max = arrayList.get(arrayList.size()-1);
+        for(int i =1;i<arrayList.size();i++){
+            int count = 0;
+            int test = arrayList.get(i) - arrayList.get(i-1);
+            if(test != 1){
+
+                while(test>1){
+                    count++;
+                    result += "\nNever saw temperature: "+ (arrayList.get(i-1) +count);
+                    test--;
+                }
+            }
+        }
+        System.out.println("High: " + max);
+        System.out.print("Low: " + min );
+
+        return result;
+    }
+    public static String tally( List <String> list){
+        Map<String,Integer> map=new HashMap<String,Integer>();
+        for(String dataString:list){
+            map.put(dataString,0);
+        }
+//        System.out.println(map.entrySet());
+        for(String key : map.keySet()){
+//            System.out.println(key);
+            for (String name :list){
+                Integer count = map.get(key);
+                if(key == name){
+                    map.put(key,count+1);
+                }
+            }
+        }
+        String winner = "";
+
+        for(String key : map.keySet()){
+            if(map.get(key) == Collections.max(map.values()))
+winner = key;
+        }
+return winner;
+    }
+
     public static void main(String[] args) {
         int []arr = {1,2,6,3,1};
         int[][] weeklyMonthTemperatures = {
@@ -69,11 +128,27 @@ public class Library {
                 {55, 54, 60, 53, 59, 57, 61},
                 {65, 56, 55, 52, 55, 62, 57}
         };
+
         System.out.println(roll(4));
         System.out.println(containsDuplicates(arr));
         System.out.println(average(arr));
+        System.out.println("//return lowestAverage array");
         int[] averageArray= lowestAverage(weeklyMonthTemperatures);
         System.out.println(Arrays.toString(averageArray));
-
+        //Analyzing Weather Data
+        System.out.println("\n//Analyzing Weather Data");
+        System.out.println(analyzingWeather(weeklyMonthTemperatures));
+        List<String> votes = new ArrayList<>();
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Bush");
+        votes.add("Hedge");
+        votes.add("Bush");
+        String winner = tally(votes);
+        System.out.println(winner + " received the most votes!");
     }
 }
