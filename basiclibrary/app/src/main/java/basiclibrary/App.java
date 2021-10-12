@@ -3,9 +3,11 @@
  */
 package basiclibrary;
 import java.util.Random;
-import java.util.ArrayList;
+import java.util.*;
 public class App {
-
+    public String getGreeting() {
+        return "Hello world.";
+    }
     public static  ArrayList<Integer> roll (int num){
 
         ArrayList<Integer> arr = new ArrayList<Integer>();
@@ -45,33 +47,21 @@ public class App {
 
         return sum/count;
     }
-    public static int lowestaverage(int [][]arr) {
-        ArrayList<Integer> avgArr = new ArrayList<Integer>();
-        int sum = 0;
-        int avg = 0;
-        int count = 0;
-        for(int i = 0;i<arr.length;i++){
-            for(int y =0 ;y<arr[i].length ;y++){
-                sum = sum + arr[i][y];
-                count++;
-                avg = sum/arr[i].length;
+    public static int[] lowestAverage(int[][] arr) {
+        ArrayList<Double> averageArray = new ArrayList<Double>();
+        for (int i = 0; i < arr.length; i++) {
+            double sum = 0;
+            for (int j = 0; j < arr[i].length; j++) {
+                sum += arr[i][j];
             }
-            avgArr.add(avg);
-            // System.out.print(avgArr[i]);
-
-            avg = 0;
-
+            averageArray.add(sum / arr[i].length);
         }
-        int min = avgArr.get(0);
-        for (int i = 1; i < avgArr.size(); i++) {
-            if (avgArr.get(i) < min) {
-                min = avgArr.get(i);
-            }
-        }
-//        System.out.print(avgArr);
-        return min;
+        //  System.out.println(averageArray);
+
+        return arr[averageArray.indexOf(Collections.min(averageArray))];
     }
     public static void main(String[] args) {
+        System.out.println(new App().getGreeting());
         int []arr = {1,2,6,3,1};
         int[][] weeklyMonthTemperatures = {
                 {66, 64, 58, 65, 71, 57, 60},
@@ -82,6 +72,8 @@ public class App {
         System.out.println(roll(4));
         System.out.println(containsDuplicates(arr));
         System.out.println(average(arr));
-        System.out.println(	lowestaverage(weeklyMonthTemperatures));
+       int[] averageArray= lowestAverage(weeklyMonthTemperatures);
+        System.out.println(Arrays.toString(averageArray));
+
     }
 }
