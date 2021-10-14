@@ -13,42 +13,34 @@ import static org.junit.jupiter.api.Assertions.*;
 class AppTest {
     App classUnderTest = new App();
 
-    @Test
-    void appHasAGreeting() {
-
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
-    }
 
     @Test
     void emptyFile() {
         String expect = "";
-        Path pathemptyFile = Paths.get("C:\\Users\\STUDENT\\Desktop\\java-fundamentals\\java-fundamentals\\" +
-                "linter\\app\\src\\test\\java\\linter\\resources\\emptyFile.js");
+        Path pathemptyFile = Paths.get("src/test/resources/emptyFile.js");
         assertEquals(expect, classUnderTest.lint(pathemptyFile));
     }
 
     @Test
     void noError() {
         String expect = "";
-        Path pathNoError = Paths.get("C:\\Users\\STUDENT\\Desktop\\java-fundamentals\\java-fundamentals\\" +
-                "linter\\app\\src\\test\\java\\linter\\resources\\noError.js");
+        Path pathNoError = Paths.get("src/test/resources/noError.js");
         assertEquals(expect, classUnderTest.lint(pathNoError));
     }
     @Test
     void oneError() {
         String expect = "Line 5: Missing semicolon.\n";
-        Path pathOneError = Paths.get("C:\\Users\\STUDENT\\Desktop\\java-fundamentals\\java-fundamentals\\" +
-                "linter\\app\\src\\test\\java\\linter\\resources\\oneError.js");
+        Path pathOneError = Paths.get("src/test/resources/oneError.js");
         assertEquals(expect, classUnderTest.lint(pathOneError));
     }
     @Test
-    void fewError() {
+    void fewErrors() {
         String expect = "Line 11: Missing semicolon.\n"+ "Line 32: Missing semicolon.\n"  +"Line 70: Missing semicolon.\n" +
                 "Line 101: Missing semicolon.\n";
-        Path pathfewError = Paths.get("C:\\Users\\STUDENT\\Desktop\\java-fundamentals\\java-fundamentals\\linter\\" +
-                "app\\src\\test\\java\\linter\\resources\\fewErrors.js");
-        assertEquals(expect, classUnderTest.lint(pathfewError));
+        Path pathFewErrors = Paths.get("src/test/resources/fewErrors.js");
+        assertEquals(expect, classUnderTest.lint(pathFewErrors));
     }
+
     @Test
     void manyError() {
         String expect = "Line 11: Missing semicolon.\n"+
@@ -68,8 +60,7 @@ class AppTest {
         "Line 99: Missing semicolon.\n" +
         "Line 100: Missing semicolon.\n" +
         "Line 101: Missing semicolon.\n";
-        Path pathManyError = Paths.get("C:\\Users\\STUDENT\\Desktop\\java-fundamentals\\java-fundamentals\\" +
-                "linter\\app\\src\\test\\java\\linter\\resources\\manyErrors.js");
+        Path pathManyError = Paths.get("src/test/resources/manyErrors.js");
         assertEquals(expect, classUnderTest.lint(pathManyError));
     }
 }

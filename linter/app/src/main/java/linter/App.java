@@ -11,9 +11,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
+
 
     public static String lint(Path path){
         String errorMessage = "";
@@ -44,8 +42,7 @@ public class App {
 
     public static void main(String[] args) {
 
-        Path path = Paths.get("C:\\Users\\STUDENT\\Desktop\\java-fundamentals\\" +
-                "java-fundamentals\\linter\\app\\src\\main\\java\\linter\\resources\\gates.js");
+        Path path = Paths.get("src/main/resources/gates.js");
         System.out.println( lint(path));
     }
 
