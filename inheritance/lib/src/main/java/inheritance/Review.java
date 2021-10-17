@@ -8,10 +8,12 @@ public class Review {
     public Review(String body, String author, int stars){
         this.body= body;
         this.author= author;
-       if(stars <0 || stars>5){
-           this.stars = 0;
-       }else
-           this.stars= stars;
+        if(stars <0 ){
+            this.stars = 0;
+        }else if(stars>5){
+            this.stars = 5;
+        }else
+            this.stars= stars;
 
     }
 

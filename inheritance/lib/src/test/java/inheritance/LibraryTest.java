@@ -15,7 +15,7 @@ class LibraryTest {
     }
     @Test void TestReviewClass() {
         Review review = new Review("good restaurant","jad",6);
-        String expect = "Review good restaurant with stars 0, author jad";
+        String expect = "Review good restaurant with stars 5, author jad";
         assertEquals(expect,review.toString());
     }
 

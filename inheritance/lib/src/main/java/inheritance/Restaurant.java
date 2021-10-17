@@ -9,9 +9,9 @@ public class Restaurant {
 
     public Restaurant(String name, double stars,double price){
         this.name= name;
-        if(stars <0 ){
+        if(stars < 0 ){
             this.stars = 0;
-        }else if(stars>5){
+        }else if(stars > 5){
             this.stars = 5;
         }else
             this.stars= stars;
@@ -39,10 +39,10 @@ public class Restaurant {
         return reviewList;
     }
     public String toString(){
-if(reviewList.size()!= 0)
+      if(reviewList.size()!= 0)
         return "Restaurant name " + name + " with stars " + stars + ", his price " + price + "$ " +reviewList.toString() ;
-else
-    return  "Restaurant name " + name + " with stars " + stars + ", his price " + price + "$ ";
+      else
+        return  "Restaurant name " + name + " with stars " + stars + ", his price " + price + "$ ";
 
     }
 
