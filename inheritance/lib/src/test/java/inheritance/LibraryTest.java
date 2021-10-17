@@ -7,8 +7,28 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LibraryTest {
-    @Test void someLibraryMethodReturnsTrue() {
-        Library classUnderTest = new Library();
-        assertTrue(classUnderTest.someLibraryMethod(), "someLibraryMethod should return 'true'");
+    Library test = new Library();
+    @Test void TestResturantClass() {
+        Restaurant resturant = new Restaurant("McDonald’s",5.0,6.5);
+        String expect = "Restaurant name McDonald’s with stars 5.0, his price 6.5$ ";
+        assertEquals(expect,resturant.toString());
     }
+    @Test void TestReviewClass() {
+        Review review = new Review("good restaurant","jad",6);
+        String expect = "Review good restaurant with stars 0, author jad";
+        assertEquals(expect,review.toString());
+    }
+
+    @Test void AddReviewAndUpdateToStringTest() {
+        Restaurant McDonald = new Restaurant("McDonald’s",5.0,6.5);
+        Review review = new Review("good restaurant","jad", -1);
+        Review review2 = new Review("well restaurant","ahmad", 5);
+        McDonald.addReview(review);
+        McDonald.addReview(review2);
+        String expect = "Restaurant name McDonald’s with stars 2.5, his price 6.5$ " +
+                "[Review good restaurant with stars 0, author jad," +
+                " Review well restaurant with stars 5, author ahmad]";
+        assertEquals(expect,McDonald.toString());
+    }
+
 }
