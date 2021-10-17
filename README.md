@@ -28,3 +28,15 @@ analyzingWeather | this method accepts two dimensional array and return the numb
 tally | this method accepts a List of Strings representing votes and returns one string to show what got the most votes, i use Map also make test for this method
 
 * The test for each method inside basiclibrary2/lib/src/test/java/basiclibrary2/LibraryTest.java 
+
+
+### Lab 6 :inheritance
+* I created class named Resturant with an attributes, and one constructor that contain three parameters.
+* I created class named Review with an attributes, and one constructor that contain three parameters.
+* Inside Resturant class I use *ArrayList* to hold the reviws for a single resturant and declare addReview method to add reviews in the ArrayList.
+* I Implemented a reasonable toString method for Resturant and Review classes.
+* I created starsAvg() method in Resturant class to get the avarege for Resturant number of stars from reviews number of stars.
+#### testing
+1. TestResturantClass method for Restaurant constructor to check is behaving reasonably also ensure that its toString method is working properly.
+2. TestReviewClass method for Review constructor to check is behaving reasonably also ensure that its toString method is working properly.
+3. AddReviewAndUpdateToStringTest method for testing the addReview method and the Updated toString .
