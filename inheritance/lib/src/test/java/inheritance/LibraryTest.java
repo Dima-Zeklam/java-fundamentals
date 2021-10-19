@@ -9,26 +9,99 @@ import static org.junit.jupiter.api.Assertions.*;
 class LibraryTest {
     Library test = new Library();
     @Test void TestResturantClass() {
-        Restaurant resturant = new Restaurant("McDonald’s",5.0,6.5);
+        Restaurant restaurant = new Restaurant("McDonald’s",5.0,6.5);
         String expect = "Restaurant name McDonald’s with stars 5.0, his price 6.5$ ";
-        assertEquals(expect,resturant.toString());
+        assertEquals(expect,restaurant.toString());
     }
     @Test void TestReviewClass() {
-        Review review = new Review("good restaurant","jad",6);
-        String expect = "Review good restaurant with stars 5, author jad";
+        Review review = new Review("excellent restaurant","Avril", 8);
+        String expect = "Review{ author='Avril', body='excellent restaurant', stars=5}";
         assertEquals(expect,review.toString());
     }
 
     @Test void AddReviewAndUpdateToStringTest() {
         Restaurant McDonald = new Restaurant("McDonald’s",5.0,6.5);
-        Review review = new Review("good restaurant","jad", -1);
-        Review review2 = new Review("well restaurant","ahmad", 5);
+        Review review = new Review("good restaurant","Jad", -1);
+        Review review2 = new Review("well restaurant","Jon", 5);
         McDonald.addReview(review);
         McDonald.addReview(review2);
-        String expect = "Restaurant name McDonald’s with stars 2.5, his price 6.5$ " +
-                "[Review good restaurant with stars 0, author jad," +
-                " Review well restaurant with stars 5, author ahmad]";
-        assertEquals(expect,McDonald.toString());
+        String expected = "Restaurant name McDonald’s with stars 2.5, his price 6.5$ " +
+                "[Review{ author='Jad', body='good restaurant', stars=0}, " +
+                "Review{ author='Jon', body='well restaurant', stars=5}]";
+        assertEquals(expected,McDonald.toString());
     }
+    @Test void TestShopClass() {
+        Shop shop = new Shop(" Zara "," Shop for outfits",45.0);
+        String expected = "Shop{name=' Zara ', description=' Shop for outfits', numberOfDollarSigns=45.0$ }";
+        assertEquals(expected,shop.toString());
+    }
+    @Test void TestShopReview() {
+        Place shop = new Shop("Zara","good outfit shop",45.0);
+        Review review4 = new Review("excellent shop","Avril", 8);
+        Review review5 = new Review("very good shop","dima", 5);
+        shop.addReview(review4);
+        shop.addReview(review5);
+        String expected = "Shop{name='Zara', description='good outfit shop', numberOfDollarSigns=45.0$ }" +
+                "[Review{ author='Avril', body='excellent shop', stars=5}, " +
+                "Review{ author='dima', body='very good shop', stars=5}]";
+        assertEquals(expected,shop.toString());
+    }
+    @Test void TestRestaurantReview() {
+        Place restaurant = new Restaurant("McDonald’s",5.0,6.5);
+        Review review = new Review("good restaurant","Jad", -1);
+        Review review2 = new Review("well restaurant","Jon", 5);
+        restaurant.addReview(review);
+        restaurant.addReview(review2);
+        System.out.println(restaurant.toString());
+        String expected = "Restaurant name McDonald’s with stars 2.5, his price 6.5$" +
+                " [Review{ author='Jad', body='good restaurant', stars=0}," +
+                " Review{ author='Jon', body='well restaurant', stars=5}]";
+        assertEquals(expected,restaurant.toString());
+    }
+
+    @Test void TestTheaterClass() {
+        Theater theater = new Theater("TAJCinemas");
+        String expected= "Theater{name='TAJCinemas', allMovie=[]}";
+        assertEquals(expected,theater.toString());
+    }
+    @Test void TestAddandDeleteMovie() {
+        Theater theater = new Theater("TAJCinemas");
+        theater.addMovie("Soul");
+        theater.addMovie("Zootopia");
+        theater.addMovie("Fast & Furious");
+        theater.addMovie("Cinderella");
+        theater.deleteMovie("zootopia");
+        String expected= "Theater{name='TAJCinemas', allMovie=[Soul, Zootopia, Fast & Furious, Cinderella]}";
+        assertEquals(expected,theater.toString());
+    }
+    @Test void TestTheaterReview() {
+        Theater theater = new Theater("TAJCinemas");
+        Review review6 = new Review("well restaurant","Jon", 5);
+        Review review7 = new Review("excellent restaurant","Avril", 8);
+        theater.addReview(review6);
+        theater.addReview(review7);
+        String expected= "Theater{name='TAJCinemas', allMovie=[]}" +
+                "[Review{ author='Jon', body='well restaurant', stars=5}," +
+                " Review{ author='Avril', body='excellent restaurant', stars=5}]";
+        assertEquals(expected,theater.toString());
+    }
+
+    @Test void TestTheaterReviewWithMovieSaw() {
+        Theater theater = new Theater("TAJCinemas");
+        Review review6 = new Review("well restaurant","Jon", 5,"Fast & Furious");
+        Review review7 = new Review("excellent restaurant","Avril", 8,"Soul");
+        theater.addReview(review6);
+        theater.addReview(review7);
+        theater.addMovie("Soul");
+        theater.addMovie("Fast & Furious");
+        theater.addMovie("Cinderella");
+
+        String expected= "Theater{name='TAJCinemas', allMovie=[Soul, Fast & Furious, Cinderella]}" +
+                "[Review{author='Jon' Movie name:Fast & Furious'body='well restaurant', stars=5}," +
+                " Review{author='Avril' Movie name:Soul'body='excellent restaurant', stars=5}]";
+        assertEquals(expected,theater.toString());
+    }
+
+
 
 }
