@@ -64,7 +64,7 @@ class LibraryTest {
         String expected= "Theater{name='TAJCinemas', allMovie=[]}";
         assertEquals(expected,theater.toString());
     }
-    @Test void TestAddandDeleteMovie() {
+    @Test void TestAddAndDeleteMovie() {
         Theater theater = new Theater("TAJCinemas");
         theater.addMovie("Soul");
         theater.addMovie("Zootopia");

@@ -49,7 +49,7 @@ public class Library {
         theater.addMovie("Zootopia");
         theater.addMovie("Fast & Furious");
         theater.addMovie("Cinderella");
-        theater.deleteMovie("zootopia");
+        theater.deleteMovie("Zootopia");
         System.out.println(theater.toString());
         System.out.println("---------------------------------------");
         Review review6 = new Review("well restaurant","Jon", 5,"Fast & Furious");
