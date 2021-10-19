@@ -5,21 +5,59 @@ package inheritance;
 
 public class Library {
     public static void main(String[] args) {
-
-        Restaurant McDonald = new Restaurant("McDonald’s",5.0,6.5);
-        System.out.println(McDonald.toString());
-        System.out.println("---------------------------------------");
+        // Implement for Restaurant class
+        Restaurant McDonald = new Restaurant("McDonald’s",5,6.5);
+        System.out.println( McDonald.toString() + "\n");
+        // Implement Review class
         Review review = new Review("good restaurant","Jad", -1);
         Review review2 = new Review("well restaurant","Jon", 5);
         Review review3 = new Review("excellent restaurant","Avril", 8);
-        System.out.println(review.toString());
-        System.out.println("---------------------------------------");
+        System.out.println( review.toString() +"\n" );
+        // add review for restaurant
         McDonald.addReview(review);
         McDonald.addReview(review2);
         McDonald.addReview(review3);
-           for (int i =0;i<McDonald.returnrRviewList().size();i++)
-        System.out.println("review "+(i+1) +": "+ McDonald.returnrRviewList().get(i));
+        System.out.println( McDonald.toString() + "\n");
+        for (int i =0;i<McDonald.getReviewList().size();i++)
+        System.out.println("review "+(i+1) +": "+ McDonald.getReviewList().get(i));
         System.out.println("---------------------------------------");
-        System.out.println(McDonald.toString());
+
+        // Implement for Shop class
+        Shop Zara = new Shop(" Zara "," Shop for outfits",45.0);
+        System.out.println( Zara.toString() +"\n" );
+        //Implement for Theater class
+        Theater theater = new Theater("TAJCinemas");
+        System.out.println(theater.toString());
+
+        System.out.println("---------------------------------------");
+
+       Place restaurant = new Restaurant("McDonald’s",5.0,6.5);
+       restaurant.addReview(review);
+       restaurant.addReview(review2);
+//       restaurant.addReview(review3);
+       System.out.println(restaurant.toString());
+        System.out.println("---------------------------------------");
+        Place shop = new Shop("Zara","good outfit shop",45.0);
+        Review review4 = new Review("excellent shop","Avril", 8);
+        Review review5 = new Review("very good shop","dima", 5);
+        shop.addReview(review4);
+        shop.addReview(review5);
+        System.out.println( shop.toString());
+        System.out.println("---------------------------------------");
+        // addmovie and delete
+        theater.addMovie("Soul");
+        theater.addMovie("Zootopia");
+        theater.addMovie("Fast & Furious");
+        theater.addMovie("Cinderella");
+        theater.deleteMovie("Zootopia");
+        System.out.println(theater.toString());
+        System.out.println("---------------------------------------");
+        Review review6 = new Review("well restaurant","Jon", 5,"Fast & Furious");
+        Review review7 = new Review("excellent restaurant","Avril", 8, "Soul");
+        theater.addReview(review6);
+        theater.addReview(review7);
+        System.out.println(theater.toString());
+
+
     }
 }
